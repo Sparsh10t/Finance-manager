@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -10,10 +11,14 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // fake login logic (later replace with backend)
-    if (email && password) {
-      navigate("/dashboard"); // redirect
+    if (!email || !password) {
+      alert("Please enter email and password");
+      return;
     }
+
+    localStorage.setItem("isLoggedIn", "true");
+
+    navigate("/dashboard");
   };
 
   return (
@@ -22,20 +27,23 @@ const Login = () => {
       <h2>Login</h2>
 
       <form onSubmit={handleLogin}>
+
         <input
+          type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
-          placeholder="Password"
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button>Login</button>
+        <button type="submit">Login</button>
+
       </form>
 
     </div>

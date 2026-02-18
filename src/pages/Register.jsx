@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -11,10 +12,14 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
 
-    // fake register logic
-    if (name && email && password) {
-      navigate("/login"); // redirect to login
+    if (!name || !email || !password) {
+      alert("Please fill all fields");
+      return;
     }
+
+    alert("Account created successfully!");
+
+    navigate("/login");
   };
 
   return (
@@ -23,6 +28,7 @@ const Register = () => {
       <h2>Register</h2>
 
       <form onSubmit={handleRegister}>
+
         <input
           placeholder="Name"
           value={name}
@@ -36,13 +42,14 @@ const Register = () => {
         />
 
         <input
-          placeholder="Password"
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <button>Create Account</button>
+
       </form>
 
     </div>

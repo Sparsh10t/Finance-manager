@@ -61,13 +61,14 @@ const Home = () => {
 
       <section className="landing-cta">
 
-        <h2>Start Managing Your Finances Today</h2>
+  <h2>Start Managing Your Finances Today</h2>
 
-        <Link to="/register">
-          <button className="cta-btn">Create Account</button>
-        </Link>
+  <Link to="/register">
+    <button className="cta-btn">Create Account</button>
+  </Link>
 
-      </section>
+</section>
+
 
     </div>
   );
